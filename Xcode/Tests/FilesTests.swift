@@ -35,10 +35,10 @@ class FilesTests: XCTestCase {
         } catch {
             // no worries
         }
-        
+
         super.tearDown()
     }
-    
+
     func testShareFile() {
         let request = HttpRequest()
         let closure = shareFile(temporaryDirectoryURL.appendingPathComponent(temporaryFileName).path)
@@ -49,13 +49,13 @@ class FilesTests: XCTestCase {
         XCTAssert(headers["Content-Type"] == "image/png")
         XCTAssert(headers["Content-Length"] == "14")
     }
-    
+
     func testShareFileNotFound() {
         let request = HttpRequest()
         let closure = shareFile(temporaryDirectoryURL.appendingPathComponent("does_not_exist").path)
         let result = closure(request)
 
-        XCTAssert(result == .notFound)
+        XCTAssert(result == .notFound())
     }
 
     func testShareFilesFromDirectory() {
@@ -69,7 +69,7 @@ class FilesTests: XCTestCase {
         XCTAssert(headers["Content-Type"] == "image/png")
         XCTAssert(headers["Content-Length"] == "14")
     }
-    
+
     func testShareFilesFromDirectoryFileNotFound() {
         let request = HttpRequest()
         request.params = ["path": "does_not_exist.wav"]
@@ -77,9 +77,9 @@ class FilesTests: XCTestCase {
         let closure = shareFilesFromDirectory(temporaryDirectoryURL.path)
         let result = closure(request)
 
-        XCTAssert(result == .notFound)
+        XCTAssert(result == .notFound())
     }
-    
+
     func testDirectoryBrowser() {
         let request = HttpRequest()
         request.params = ["path": ""]
@@ -88,13 +88,13 @@ class FilesTests: XCTestCase {
 
         XCTAssert(result.statusCode == 200)
     }
-    
+
     func testDirectoryBrowserNotFound() {
         let request = HttpRequest()
         request.params = ["path": "does/not/exist"]
         let closure = directoryBrowser(temporaryDirectoryURL.path)
         let result = closure(request)
 
-        XCTAssert(result == .notFound)
+        XCTAssert(result == .notFound())
     }
 }

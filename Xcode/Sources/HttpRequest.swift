@@ -114,7 +114,7 @@ public class HttpRequest {
                 return nil
             }
         } else {
-            let /* ignore */ _ = nextUTF8MultiPartLine(&generator)
+            _ = nextUTF8MultiPartLine(&generator)
         }
         var headers = [String: String]()
         while let line = nextUTF8MultiPartLine(&generator), !line.isEmpty {
