@@ -12,7 +12,7 @@ public func shareFile(_ path: String) -> ((HttpRequest) -> HttpResponse) {
         if let file = try? path.openForReading() {
             let mimeType = path.mimeType()
             var responseHeader: [String: String] = ["Content-Type": mimeType]
-            
+
             if let attr = try? FileManager.default.attributesOfItem(atPath: path),
                 let fileSize = attr[FileAttributeKey.size] as? UInt64 {
                 responseHeader["Content-Length"] = String(fileSize)

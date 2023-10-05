@@ -7,7 +7,7 @@
 
 import Foundation
 
-#if os(iOS) || os(tvOS) || os (Linux)
+#if os(iOS) || os(tvOS) || os(Linux)
 // swiftlint:disable type_name function_parameter_count
     struct sf_hdtr { }
 
@@ -44,7 +44,7 @@ extension Socket {
         var offset: off_t = 0
         var sf: sf_hdtr = sf_hdtr()
 
-        #if os(iOS) || os(tvOS) || os (Linux)
+        #if os(iOS) || os(tvOS) || os(Linux)
         let result = sendfileImpl(file.pointer, self.socketFileDescriptor, 0, &offset, &sf, 0)
         #else
         let result = sendfile(fileno(file.pointer), self.socketFileDescriptor, 0, &offset, &sf, 0)
