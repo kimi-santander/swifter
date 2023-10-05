@@ -9,7 +9,7 @@
 Tiny http server engine written in [Swift](https://developer.apple.com/swift/) programming language.
 
 ### Branches
-`* stable` - lands on CocoaPods and others. Supports the latest non-beta XCode and SPM. Stable.
+`* stable` - lands on CocoaPods and others. Supports the latest non-beta Xcode and SPM. Stable.
 
 `* master` - stable branch plus experimental web-framework layer.
 
@@ -79,12 +79,12 @@ server.start()
 ```ruby
 use_frameworks!
 
-pod 'Swifter', '~> 1.4.7'
+pod 'Swifter', '~> 1.5.0'
 ```
 
 ### Carthage? Also yes.
 ```
-github "httpswift/swifter" ~> 1.4.7
+github "httpswift/swifter" ~> 1.5.0
 ```
 
 ### Swift Package Manager.
@@ -94,7 +94,7 @@ import PackageDescription
 let package = Package(
     name: "MyServer",
     dependencies: [
-        .package(url: "https://github.com/httpswift/swifter.git", .upToNextMajor(from: "1.4.7"))
+        .package(url: "https://github.com/httpswift/swifter.git", .upToNextMajor(from: "1.5.0"))
     ]
 )
 ```
